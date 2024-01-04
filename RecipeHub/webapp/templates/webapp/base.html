@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe-Hub</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+
+    <link rel="stylesheet" href="{%static 'css/flatly.css'%}">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+    
+    <style>
+        body {
+    font-family: "Poppins", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+    padding-bottom: 50px;
+}
+
+    </style>
+</head>
+<body>
+    {% block navbar %}
+    {% include 'webapp/navbar.html'%}
+    {% endblock %}
+    {%block page_title%}
+    <body>
+    <h2 class="text-center">Welcome to Recipe-Hub</h2>
+    </body>
+    {%endblock%}
+    {%block page_content%}
+    {%endblock%}
+    {%block page_end%}
+    <div style="margin:300px">
+    </div>
+    {%endblock%}
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'webapp/base.html' %}
+{% block page_title %}
+<h2>Your Search Results For : {{query}}</h2>
+{% endblock %}
+
+{% block page_content %}
+<head>
+    <style>
+         a {
+      color: #333; /* Default text color */
+      text-decoration: none; /* Remove default underline */
+      transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions for color and background */
+    }
+    a:hover {
+      color: #0056b3; /* Change text color on hover */
+      /* text-decoration: underline; Underline on hover */
+      background-color: #f8f9fa; /* Add a subtle background color on hover */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a shadow on hover */
+      cursor: pointer; /* Change cursor on hover */
+    }
+    </style>
+
+</head>
+<body style="text-align: center;">
+
+    
+    {% if results %}
+    {% for r in results %}
+    <div style="display: flex ; flex-direction: column;">
+        <h2 style="margin-top: 50px; margin-bottom: 0px">
+
+        <a href="{% url 'details' r.id %}" style="">{{r.name}}</a>
+    </h2>
+
+        <br>
+        <!-- {{r.description|linebreaks}} -->
+
+    </div>
+    {% endfor %}
+
+    {% else %}
+    <p>no results found.</p>
+    {% endif %}
+        
+</body>
+{% endblock %}

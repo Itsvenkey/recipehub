@@ -1,0 +1,43 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; top: 0; height:80px; width: 100%; z-index: 1000;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url '' %}">Recipe-Hub</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{%url '' %}">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#intro">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#description">Description</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ingredients">Ingredients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#steps">steps</a>
+          </li>
+        </ul>
+
+        <ul class="navbar nav  mb-2 mb-lg-0">
+          {% if user.is_authenticated and recipe_detail.author == request.user %}
+
+          <li class="nav-item btn btn-success">
+
+            <a class="nav-link" href="{% url 'edit-recipe' recipe_detail.id %}" style="color: white;">edit</a>
+          </li>
+          &nbsp;
+          <li class="nav-item btn btn-danger " >
+            <a class="nav-link" href="{% url 'delete-recipe' recipe_detail.id %}" style="color: white;">delete</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>

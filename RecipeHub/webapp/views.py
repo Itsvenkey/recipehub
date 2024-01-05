@@ -46,7 +46,7 @@ def login(request):
     context = {'form':form}
     return render(request,'webapp/login.html',context=context)
 
-
+@login_required(login_url='login')
 def logout(request):
     auth.logout(request)
     return (redirect(''))
@@ -93,7 +93,7 @@ def addrecipe(request):
     
     return render(request,'webapp/add_recipe.html',context)
 
-
+@login_required(login_url='login')
 def editRecipe(request,pk):
     record = recipe.objects.get(id=pk)
     
@@ -111,7 +111,7 @@ def editRecipe(request,pk):
     }
     return  render(request,'webapp/edit_recipe.html',context)
 
-
+@login_required(login_url='login')
 def deleteRecipe(request,pk):
     record = recipe.objects.get(id=pk)
     if request.method =='POST':

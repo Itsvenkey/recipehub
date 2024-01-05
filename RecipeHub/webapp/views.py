@@ -6,15 +6,14 @@ from django.contrib.auth.models import auth
 from .models import recipe
 from django.db.models import Q
 
-# Create your views here.
-
-
+# view for home page
 def home(request):
     recipes = recipe.objects.all()
     context = {'recipe':recipes}
     
     return render(request,'webapp/home.html',context=context)
 
+# view of register page
 
 def register(request):
     form = registerForm()
@@ -28,6 +27,7 @@ def register(request):
     context = {'form':form}
     return render(request,'webapp/register.html',context=context)
 
+# view for login page
 
 def login(request):
     form = loginForm()
@@ -45,6 +45,10 @@ def login(request):
         
     context = {'form':form}
     return render(request,'webapp/login.html',context=context)
+
+
+
+# view for logout 
 
 @login_required(login_url='login')
 def logout(request):
@@ -74,6 +78,8 @@ def search(request):
     return render(request,'webapp/search_result.html',context)
     
     
+# view for adding recipe
+
 @login_required(login_url='login')
 def addrecipe(request):
     form = addRecipeForm()
@@ -93,6 +99,9 @@ def addrecipe(request):
     
     return render(request,'webapp/add_recipe.html',context)
 
+
+# view for editing recipe
+
 @login_required(login_url='login')
 def editRecipe(request,pk):
     record = recipe.objects.get(id=pk)
@@ -110,6 +119,9 @@ def editRecipe(request,pk):
         'form':form
     }
     return  render(request,'webapp/edit_recipe.html',context)
+
+
+#view for delete recipe
 
 @login_required(login_url='login')
 def deleteRecipe(request,pk):

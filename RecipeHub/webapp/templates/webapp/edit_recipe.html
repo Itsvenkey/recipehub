@@ -1,42 +1,31 @@
-{% extends 'webapp/base.html'%}
-{% load crispy_forms_tags %}
+{% extends 'webapp/base.html'%} {% load crispy_forms_tags %} {% block
+page_content%}
+<div
+  class="container bg-light shadow-md p-5"
+  style="border-radius: 15px; margin-top: 100px; width: auto"
+>
+  <h3 class="text-capitalize text-center" style="margin-bottom: 50px"></h3>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="POST" class="mb-2">
+        {% csrf_token %}
+        <div class="mb-5">{{ form.name|as_crispy_field }}</div>
+        <div class="mb-5">{{ form.image|as_crispy_field }}</div>
+        <div class="mb-5">{{ form.description|as_crispy_field }}</div>
+        <div class="mb-5">{{ form.ingredients|as_crispy_field }}</div>
+        <div class="mb-5">{{ form.steps|as_crispy_field }}</div>
 
+        <button type="submit" class="btn btn-success w-100">Update</button>
+      </form>
 
-{% block page_content%}
-<div class="container bg-light shadow-md p-5" style="border-radius: 15px; margin-top: 100px; width: auto;" >
-
-    <h3 class="text-capitalize text-center" style="margin-bottom: 50px;"></h3>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form method="POST" class="mb-2">
-                {% csrf_token %}
-                <div class="mb-5">
-                    {{ form.name|as_crispy_field }}
-                </div>
-                <div class="mb-5">
-                    {{ form.image|as_crispy_field }}
-                </div>
-                <div class="mb-5">
-                    {{ form.description|as_crispy_field }}
-                </div>
-                <div class="mb-5">
-                    {{ form.ingredients|as_crispy_field }}
-                </div>
-                <div class="mb-5">
-                    {{ form.steps|as_crispy_field }}
-                </div>
-
-                <button type="submit" class="btn btn-success w-100">Update</button>
-            </form>
-            
-                <div onclick="goBack()" class="btn btn-primary w-100 mb-2"> back</div>
-        </div>
+      <div onclick="goBack()" class="btn btn-primary w-100 mb-2">back</div>
     </div>
+  </div>
 </div>
 <script>
-    function goBack(){
-        window.history.back();
-    }
+  function goBack() {
+    window.history.back();
+  }
 </script>
 
 {% endblock %}

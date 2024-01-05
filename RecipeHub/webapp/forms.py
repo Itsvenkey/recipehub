@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from .models import recipe
 
+#registeration form 
+
 
 class registerForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'username'}),help_text='',label='')
@@ -13,11 +15,14 @@ class registerForm(UserCreationForm):
         model = User
         fields = ['username','password1', 'password2']
 
+# login form
 class loginForm (AuthenticationForm):
     
     username = forms.CharField(max_length=40,widget=forms.TextInput(attrs={'placeholder':'username',}),label='')
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'password'}),label='')
     
+
+# form for Adding Recipe
 
 class addRecipeForm (forms.ModelForm):
     name = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'placeholder':'Recipe Name'}),label='')
@@ -35,6 +40,8 @@ class addRecipeForm (forms.ModelForm):
         model = recipe
         fields = ['name','description','image','ingredients','steps']
         
+
+#form for editing recipe
 
 class editRecipeForm(forms.ModelForm):
     class Meta:

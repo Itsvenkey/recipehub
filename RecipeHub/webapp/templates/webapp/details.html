@@ -1,86 +1,73 @@
-{% extends 'webapp/base.html' %}
+{% extends 'webapp/base.html' %} {% block navbar %} {% include
+'webapp/details_navbar.html' %} {% endblock %} {% block page_title %}
+<body style="margin-top: 100px">
+  <div class="container mt-5">
+    <h1>{{ recipe_detail.name }}</h1>
+  </div>
+  <div class="container text-center">
+    <h5><strong>Author:</strong> {{ recipe_detail.author }}</h5>
+  </div>
+</body>
+{% endblock %} {% block page_content %}
+<head>
+  <style>
+    img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      margin: auto;
+      display: block;
+      border-radius: 30px;
+    }
 
-{% block navbar %}
-    {% include 'webapp/details_navbar.html' %}
-{% endblock %}
+    .container {
+      margin-top: 50px;
+    }
 
-{% block page_title %}
-    <body style="margin-top: 100px;">
-        <div class="container mt-5">
-            <h1>{{ recipe_detail.name }}</h1>
-        </div>
-        <div class="container text-center">
-            <h5><strong>Author:</strong> {{ recipe_detail.author }}</h5>
-        </div>
-    </body>
-{% endblock %}
+    h1 {
+      text-align: center;
+    }
 
-{% block page_content %}
-    <head>
-        <style>
-            img {
-                width: 100%;
-                max-width: 450px;
-                height: auto;
-                margin: auto;
-                display: block;
-                border-radius: 30px;
-            }
+    p {
+      line-height: 2rem;
+    }
 
-            .container {
-                margin-top: 50px;
-            }
+    body {
+      scroll-behavior: smooth;
+    }
 
-            h1 {
-                text-align: center;
-            }
+    .section {
+      padding: 100px 0;
+    }
+  </style>
+</head>
 
-            p {
-                line-height: 2rem;
-            }
+<body>
+  <div class="section">
+    <div class="container">
+      <img src="{{ recipe_detail.image.url }}" alt="" />
+    </div>
+  </div>
 
-            body {
-                scroll-behavior: smooth;
-            }
+  <div id="description" class="section bg-light">
+    <div class="container text-center">
+      <h1>Description</h1>
+      <div>{{ recipe_detail.description | linebreaks }}</div>
+    </div>
+  </div>
 
-            .section {
-                padding: 100px 0;
-            }
-        </style>
-    </head>
+  <div id="ingredients" class="section">
+    <div class="container text-center">
+      <h1>Ingredients</h1>
+      <div>{{ recipe_detail.ingredients | linebreaksbr }}</div>
+    </div>
+  </div>
 
-    <body>
-        <div class="section">
-            <div class="container">
-                <img src="{{ recipe_detail.image.url }}" alt="">
-            </div>
-        </div>
-
-        <div id="description" class="section bg-light">
-            <div class="container text-center">
-                <h1>Description</h1>
-                <div>
-                    {{ recipe_detail.description | linebreaks }}
-                </div>
-            </div>
-        </div>
-
-        <div id="ingredients" class="section">
-            <div class="container text-center">
-                <h1>Ingredients</h1>
-                <div>
-                    {{ recipe_detail.ingredients | linebreaksbr }}
-                </div>
-            </div>
-        </div>
-
-        <div id="steps" class="section bg-light">
-            <div class="container text-center">
-                <h1>Steps</h1>
-                <div>
-                    {{ recipe_detail.steps | linebreaks }}
-                </div>
-            </div>
-        </div>
-    </body>
+  <div id="steps" class="section bg-light">
+    <div class="container text-center">
+      <h1>Steps</h1>
+      <div>{{ recipe_detail.steps | linebreaks }}</div>
+    </div>
+  </div>
+</body>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+# model for recipe class all info about recipe is to be stored here
     
 class recipe(models.Model):
     

@@ -27,9 +27,8 @@
       {% for r in recipe%}
       <div style="display: flex; flex-direction: column">
         <h2 style="margin-top: 50px; margin-bottom: 0px">
-          <a href="{% url 'details' r.id %}" style="">{{r.name}}</a>
+          <a href="{% url 'details' r.id %}">{{r.name}}</a>
         </h2>
-        <!-- {{r.description|linebreaks}} -->
       </div>
     </div>
   {% endfor %}
